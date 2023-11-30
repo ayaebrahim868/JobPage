@@ -1,0 +1,13 @@
+<div class="container flex-center">
+  <div class="container__side-filter"></div>
+  <div class="container__main">
+    <div class="flex-center pb-20">
+      <input type="text" class="container__search" (input)="onSearch()" [(ngModel)]="inputText">
+      <button class="container__btn" (click)="addNewFunc()">Add New Job</button>
+    </div>
+    <div class="container__card" *ngIf="jobListData">
+      <app-job-card *ngFor="let item of jobListData" [jobData]="item" (deleteItem)="deleteJobItemFunc(item.id)" (viewDetails)="viewDetailsFun(item)"></app-job-card>
+    </div>
+  </div>
+</div>
+<ng-container #modal></ng-container>

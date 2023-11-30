@@ -1,0 +1,18 @@
+<div class="overlay" #container (click)="closeBtn()">
+    <div class="overlay__content" (click)="$event.stopPropagation()">
+        <div class="overlay__close">
+            <div class="overlay__close--content" (click)="closeBtn()">
+            X
+            </div>
+        </div>
+        <div class="overlay__form">
+            <h3>
+                show page details
+            </h3>
+            <app-job-card  [jobData]="jobCard"></app-job-card>
+        <button class="overlay__btn" (click)="closeBtn()">
+          ok
+        </button>
+        </div>
+    </div>
+</div>

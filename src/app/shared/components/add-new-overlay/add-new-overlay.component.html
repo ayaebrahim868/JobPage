@@ -1,0 +1,20 @@
+<div class="overlay" #container (click)="closeBtn()">
+    <div class="overlay__content" (click)="$event.stopPropagation()">
+        <div class="overlay__close">
+            <div class="overlay__close--content" (click)="closeBtn()">
+            X
+            </div>
+        </div>
+        <form [formGroup]="addForm" (ngSubmit)="addItemInListFun()" class="overlay__form">
+            <h3>
+                Add page in list
+            </h3>
+        <input type="text" class="overlay__input" placeholder="enter your Job name in List!" formControlName="name">
+        <input type="text" class="overlay__input" placeholder="enter your Job description in List!" formControlName="description">
+
+        <button class="overlay__btn" type="submit" [disabled]="!addForm.valid">
+          Add
+        </button>
+    </form>
+    </div>
+</div>

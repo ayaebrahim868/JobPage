@@ -1,0 +1,42 @@
+@import '../common/variables.scss';
+.container {
+  height: 100vh;
+  &__main {
+    width: 100vw;
+    height: 90vh;
+    overflow-y: hidden;
+    background-color: $color;
+    padding: 20px 0;
+    @media only screen and (min-width: 600px) {
+      width: 70vw;
+    }
+
+  }
+  &__side-filter {
+    width: 25vw;
+    height: 95vh;
+    border: 1px solid $color;
+    display: none;
+    @media only screen and (min-width: 600px) {
+      display: inline-flex;
+    }
+  }
+  &__search{
+    border: 1px solid #3f97f6;
+    border-radius: $borderRaduis;
+    width: 75%;
+    padding: 10px;
+    outline: none;
+  }
+  &__btn{
+    color: #fff;
+    background-color: #3f97f6;
+    padding: 10px;
+    border: none;
+    border-radius: $borderRaduis;
+  }
+  &__card{
+    overflow-y: auto;
+    height: 90%;
+  }
+}

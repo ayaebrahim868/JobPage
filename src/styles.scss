@@ -1,0 +1,29 @@
+@import 'app/common/variables.scss';
+html {
+    font-size: $fontSize;
+    font-family: sans-serif;
+}
+
+* {
+    margin: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    html {
+        font-size: 1.2rem;
+    }
+}
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.img-responsive{
+  width: 100%;
+  margin: auto;
+  padding: 1px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}

@@ -1,0 +1,15 @@
+<div class="overlay" #container (click)="closeBtn()">
+    <div class="overlay__content" (click)="$event.stopPropagation()">
+        <div class="overlay__close">
+            <div class="overlay__close--content" (click)="closeBtn()">
+            X
+            </div>
+        </div>
+            <h3>
+                Are You Sure! you want to delete?
+            </h3>
+        <button class="overlay__btn" (click)="deleteItemFun()">
+            delete
+        </button>
+    </div>
+</div>

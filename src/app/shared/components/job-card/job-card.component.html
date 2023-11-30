@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card__img" *ngIf="jobData?.img">
+    <img src="../../../assets/img/{{jobData.img}}" class="img-responsive" alt="img job">
+  </div>
+  <div class="card__content">
+    <div class="card__content--title" *ngIf="jobData.jobTitle" [innerHTML]="jobData.jobTitle"></div>
+    <div *ngIf="jobData.country" class="card__content--country">
+      {{jobData.city}}, {{jobData.country}}
+    </div>
+    <div class="card__content--sector" *ngIf="jobData.sector" [innerHTML]="jobData.sector"></div>
+    <div class="card__content--description" *ngIf="jobData.description" [innerHTML]="jobData.description"></div>
+  </div>
+  <div class="card__icons" *ngIf="!jobData.hideIcon">
+    <img src="../../../assets/svg/view.svg" class="card__icons--view" alt="view" (click)="viewDetailsFun()">
+    <img src="../../../assets/svg/recycleBin.svg" class="card__icons--delete" alt="delete" (click)="deleteItemFun()">
+  </div>
+</div>
