@@ -1,0 +1,16 @@
+.radio-container{
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  .radio__item {
+    padding-top: 5px;
+    display: flex;
+    > input {
+      width: 15px;
+      accent-color: #3f97f6;
+    }
+    > label {
+      padding-inline-start: 10px;
+    }
+  }
+}

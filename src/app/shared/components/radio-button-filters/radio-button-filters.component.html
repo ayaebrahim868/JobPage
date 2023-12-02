@@ -1,0 +1,7 @@
+<div class="radio-container">
+  <h3>{{section}}</h3>
+  <div class="radio__item" *ngFor="let item of filteredArray(); let i= index">
+    <input type="checkbox" [id]="item"  (change)="selectFilter($event)"/>
+  <label [for]="item" [innerHTML]="item"></label>
+  </div>
+</div>

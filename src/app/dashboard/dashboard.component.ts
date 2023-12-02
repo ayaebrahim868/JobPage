@@ -10,32 +10,45 @@ import { ShowDetailsOverlayComponent } from '../shared/components/show-details-o
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
+import { RadioButtonFiltersComponent } from '../shared/components/radio-button-filters/radio-button-filters.component';
+import { FilterPipe } from '../shared/pipes/filter/filter.pipe';
+import { CountryService } from '../shared/services/country.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   standalone: true,
+  providers: [FilterPipe],
   imports: [
     NgIf,
     NgFor,
     JobCardComponent,
     FormsModule,
+    RadioButtonFiltersComponent,
   ]
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   public jobListData: IJobCard[] = [];
   public cachedList: IJobCard[] = [];
+  public filterdArray: IJobCard[] | any[] = [];
   private searchSubject = new Subject<string>();
   private readonly debounceTimeMs = 300; // Set the debounce time (in milliseconds)
   public inputText: string = '';
   @ViewChild('modal', { read: ViewContainerRef })
   modal!: ViewContainerRef;
-  constructor(private jobListService: JobListService){}
+  constructor(private jobListService: JobListService, private filterPipe: FilterPipe, private countryService: CountryService){}
   ngOnInit(): void {
     this.getPageList();
     this.searchSubject.pipe(debounceTime(this.debounceTimeMs)).subscribe((searchValue) => {
       this.performSearch(searchValue);
     });
+    this.countryService.getCountryList().subscribe({
+      next: (list) => {
+        console.log('country', list);
+
+      }
+
+    })
   }
 /**
    * getPageList
@@ -47,6 +60,7 @@ public getPageList() {
     }
 
   });
+
 }
  /**
    * createDynamicComponent
@@ -132,15 +146,21 @@ ngOnDestroy() {
 }
 
 performSearch(searchValue: string) {
-  this.jobListData = [];
-    this.cachedList.filter((item) => {
-      if (
-        item.jobTitle?.toLowerCase()
-          .includes(searchValue.toLowerCase())
-      ) {
-        this.jobListData.push(item);
-      }
-    });
+  this.jobListData = this.filterPipe.transform(this.cachedList,searchValue, 'jobTitle' );
+}
+public selectFilter(ev: any) {
+  if(ev.ev.target.checked){
+    this.filterdArray.push(...this.filterPipe.transform(this.cachedList,ev.ev.target.id, ev.filteredSection ));
+  } else {
+    this.filterdArray = this.filterdArray.filter((item) =>{
+     return item[`${ev.filteredSection}`]?.toLowerCase() !== ev.ev.target.id.toLowerCase()
+    })
+  }
+  if(this.filterdArray.length> 0) {
+  this.jobListData = this.filterdArray;
+  } else {
+    this.jobListData = this.cachedList;
+  }
 }
 
 }

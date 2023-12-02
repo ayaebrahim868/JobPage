@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
-import { baseURL } from "./routes-config";
+import { API_URLS, baseURL } from "./routes-config";
 import { throwError, map, catchError } from "rxjs";
 import { Router } from "@angular/router";
 import { inject } from "@angular/core";

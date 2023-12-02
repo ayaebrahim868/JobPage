@@ -1,5 +1,10 @@
 <div class="container flex-center">
-  <div class="container__side-filter"></div>
+  <div class="container__side-filter">
+    <app-radio-button-filters class="pb-20" [filteredItems]="{list:cachedList, section: 'sector'}" (selectFilterEmit)="selectFilter($event)"></app-radio-button-filters>
+    <app-radio-button-filters class="pb-20" [filteredItems]="{list:cachedList, section: 'country'}" (selectFilterEmit)="selectFilter($event)"></app-radio-button-filters>
+    <app-radio-button-filters class="pb-20"  [filteredItems]="{list:cachedList, section: 'city'}" (selectFilterEmit)="selectFilter($event)"></app-radio-button-filters>
+
+  </div>
   <div class="container__main">
     <div class="flex-center pb-20">
       <input type="text" class="container__search" (input)="onSearch()" [(ngModel)]="inputText">

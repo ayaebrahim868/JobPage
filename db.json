@@ -1,7 +1,7 @@
 {
   "jobs": [
     {
-      "jobTitle": "software Engineer",
+      "jobTitle": "java developer",
       "city": "cairo",
       "country": "Egypt",
       "sector": "Computer software",
@@ -10,7 +10,7 @@
       "id": 2
     },
     {
-      "jobTitle": "software Engineer",
+      "jobTitle": "Ux designer",
       "city": "cairo",
       "country": "Egypt",
       "img": "job.png",
@@ -19,25 +19,25 @@
       "id": 3
     },
     {
-      "jobTitle": "software Engineer",
-      "city": "cairo",
-      "country": "Egypt",
+      "jobTitle": "ruby developer",
+      "city": "london",
+      "country": "UK",
       "sector": "Computer software",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 4
     },
     {
-      "jobTitle": "software Engineer",
-      "city": "cairo",
-      "country": "Egypt",
+      "jobTitle": "JS Engineer",
+      "city": "gedda",
+      "country": "KSA",
       "sector": "Computer software",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 5
     },
     {
-      "jobTitle": "software Engineer",
+      "jobTitle": "js Engineer",
       "city": "cairo",
       "country": "Egypt",
       "sector": "Computer software",
@@ -46,45 +46,58 @@
       "id": 6
     },
     {
-      "jobTitle": "software Engineer",
+      "jobTitle": "science teacher",
       "city": "cairo",
       "country": "Egypt",
-      "sector": "Computer software",
+      "sector": "teaching",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 7
     },
     {
-      "jobTitle": "software Engineer",
-      "city": "cairo",
-      "country": "Egypt",
-      "sector": "Computer software",
+      "jobTitle": "science teacher",
+      "city": "gedda",
+      "country": "KSA",
+      "sector": "Teaching",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 8
     },
     {
-      "jobTitle": "software Engineer",
+      "jobTitle": "math teacher",
       "city": "cairo",
       "country": "Egypt",
-      "sector": "Computer software",
+      "sector": "Teaching",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 9
     },
     {
-      "jobTitle": "software Engineer",
-      "city": "cairo",
-      "country": "Egypt",
-      "sector": "Computer software",
+      "jobTitle": "Arabic teacher",
+      "city": "abu dhabi",
+      "country": "AUE",
+      "sector": "Teaching",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 10
     },
     {
-      "jobTitle": "test",
-      "description": "testttttttttttt",
+      "jobTitle": "Arabic teacher",
+      "city": "cairo",
+      "country": "Egypt",
+      "sector": "Teaching",
+      "img": "job.png",
+      "description": "Lorem Ipsum is simply dummy.",
       "id": 11
+    },
+     {
+      "jobTitle": "Art teacher",
+      "city": "cairo",
+      "country": "Egypt",
+      "sector": "Teaching",
+      "img": "job.png",
+      "description": "Lorem Ipsum is simply dummy.",
+      "id": 12
     }
   ]
 }

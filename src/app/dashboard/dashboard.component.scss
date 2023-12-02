@@ -14,11 +14,15 @@
   }
   &__side-filter {
     width: 25vw;
-    height: 95vh;
+    height: 93vh;
     border: 1px solid $color;
     display: none;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 10px 15px;
     @media only screen and (min-width: 600px) {
-      display: inline-flex;
+      display: flex;
     }
   }
   &__search{
