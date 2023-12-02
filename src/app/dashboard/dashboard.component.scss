@@ -6,11 +6,19 @@
     height: 90vh;
     overflow-y: hidden;
     background-color: $color;
-    padding: 20px 0;
+    padding: 20px 0 30px;
     @media only screen and (min-width: 600px) {
       width: 70vw;
     }
-
+    &--search {
+      display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+    }
   }
   &__side-filter {
     width: 25vw;
@@ -38,6 +46,12 @@
     padding: 10px;
     border: none;
     border-radius: $borderRaduis;
+    margin-top: 20px;
+    width: 81%;
+    @media only screen and (min-width: 600px) {
+      margin-top: 0;
+      width: auto;
+    }
   }
   &__card{
     overflow-y: auto;

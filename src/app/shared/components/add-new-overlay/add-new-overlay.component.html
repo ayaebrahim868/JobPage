@@ -9,9 +9,23 @@
             <h3>
                 Add page in list
             </h3>
+      <div class="overlay__row">
         <input type="text" class="overlay__input" placeholder="enter your Job name in List!" formControlName="name">
-        <input type="text" class="overlay__input" placeholder="enter your Job description in List!" formControlName="description">
-
+        <input type="text" class="overlay__input" placeholder="enter sector!" formControlName="sector">
+      </div>
+      <div class="overlay__row">
+        <ng-container >
+       <select class="overlay__select" name="country" formControlName="country" value="selected" (change)="selectCountryFun($event)">
+        <option selected="selected" disabled value="selected">select country!</option>
+        <option *ngFor="let item of countriesAndCities; let i= index" id="i" [value]="item.country">{{item.country}}</option>
+       </select>
+       <select class="overlay__select" value="selected" *ngIf="countriesAndCities[countryIndex]?.cities" name="city" formControlName="city">
+        <option selected="selected" disabled value="selected">select city of country!</option>
+        <option *ngFor="let city of countriesAndCities[countryIndex]?.cities" [value]="city">{{city}}</option>
+       </select>
+      </ng-container>
+      </div>
+        <textarea class="overlay__textarea" placeholder="enter your Job description in List!" formControlName="description"></textarea>
         <button class="overlay__btn" type="submit" [disabled]="!addForm.valid">
           Add
         </button>

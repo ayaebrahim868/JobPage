@@ -21,14 +21,34 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        .overlay__input{
-            margin-top: 30px;
+        .overlay__row {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          width: 100%;
+          .overlay__input{
+            margin: 10px;
             padding: 20px;
-            display: block;
             width: 80%;
             box-shadow: #ede2e2;
             border-radius: 10px;
         }
+        .overlay__select {
+          margin: 10px;
+            padding: 20px;
+            width: 96%;
+            box-shadow: #ede2e2;
+            border-radius: 10px;
+        }
+        }
+        .overlay__textarea{
+          margin: 30px 10px 0;
+          padding: 20px;
+          display: block;
+          width: 80%;
+          box-shadow: #ede2e2;
+          border-radius: 10px;
+      }
         .overlay__btn {
             margin: 30px;
             padding: 20px;
@@ -43,6 +63,20 @@
                 background-color: #b6dec8;
             }
 
+        }
+        @media only screen and (min-width: 600px) {
+          .overlay__row{
+          flex-direction: row;
+          width: 88%;
+          .overlay__input{
+            width: 50%;
+          margin: 30px 10px 0;
+          }
+          .overlay__select {
+            width: 50%;
+            margin: 30px 10px 0;
+          }
+        }
         }
     }
 }
@@ -60,7 +94,7 @@
     }
     @media only screen and (min-width: 600px) {
         &__content {
-            flex: 0 1 50%;
+            flex: 0 1 85%;
         }
     }
 

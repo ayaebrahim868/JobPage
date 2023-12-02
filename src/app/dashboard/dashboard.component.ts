@@ -8,11 +8,10 @@ import { switchMap } from 'rxjs';
 import { AddNewOverlayComponent } from '../shared/components/add-new-overlay/add-new-overlay.component';
 import { ShowDetailsOverlayComponent } from '../shared/components/show-details-overlay/show-details-overlay.component';
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { RadioButtonFiltersComponent } from '../shared/components/radio-button-filters/radio-button-filters.component';
 import { FilterPipe } from '../shared/pipes/filter/filter.pipe';
-import { CountryService } from '../shared/services/country.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -36,19 +35,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public inputText: string = '';
   @ViewChild('modal', { read: ViewContainerRef })
   modal!: ViewContainerRef;
-  constructor(private jobListService: JobListService, private filterPipe: FilterPipe, private countryService: CountryService){}
+  constructor(private jobListService: JobListService, private filterPipe: FilterPipe){}
   ngOnInit(): void {
     this.getPageList();
     this.searchSubject.pipe(debounceTime(this.debounceTimeMs)).subscribe((searchValue) => {
       this.performSearch(searchValue);
     });
-    this.countryService.getCountryList().subscribe({
-      next: (list) => {
-        console.log('country', list);
-
-      }
-
-    })
   }
 /**
    * getPageList
@@ -90,7 +82,6 @@ public deleteJobItemFunc(id: any) {
         if (item?.id === id) {
           this.cachedList.splice(index, 1);
         }
-        // this.searchForm.reset();
         this.jobListData = [...this.cachedList];
       });
       this.modal.clear();
@@ -111,7 +102,11 @@ public deleteJobItemFunc(id: any) {
       switchMap((job: any) => {
         const payload: IJobCard = {
           jobTitle: job?.name,
-          description: job?.description
+          description: job?.description,
+          sector: job?.sector,
+          country: job?.country,
+          city: job?.city,
+          img: job?.img
         };
         return this.jobListService.createJobInList(payload);
       })
