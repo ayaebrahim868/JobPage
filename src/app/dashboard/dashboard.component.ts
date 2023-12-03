@@ -48,7 +48,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 public getPageList() {
   this.jobListService.getJobList().subscribe({
     next: (list) => {
-      this.jobListData= this.cachedList = list.reverse();
+      this.jobListData= this.cachedList = list;
+      if(this.cachedList.length> 10) {
+        this.jobListData = this.cachedList.filter((item,index)=> index <10)
+      }
     }
 
   });
@@ -82,7 +85,10 @@ public deleteJobItemFunc(id: any) {
         if (item?.id === id) {
           this.cachedList.splice(index, 1);
         }
-        this.jobListData = [...this.cachedList];
+        // this.jobListData = [...this.cachedList];
+        if(this.cachedList.length> 10) {
+          this.jobListData = this.cachedList.filter((item,index)=> index <10)
+        }
       });
       this.modal.clear();
     });
@@ -113,7 +119,10 @@ public deleteJobItemFunc(id: any) {
     )
     .subscribe((res: IJobCard) => {
       this.cachedList.unshift(res);
-      this.jobListData = [...this.cachedList];
+      // this.jobListData = [...this.cachedList];
+      if(this.cachedList.length> 10) {
+        this.jobListData = this.cachedList.filter((item,index)=> index <10)
+      }
       this.modal.clear();
     });
 }
@@ -158,4 +167,13 @@ public selectFilter(ev: any) {
   }
 }
 
+public navFun(btnType: string) {
+  let savedData =[];
+  if(btnType == 'next') {
+    savedData = [...this.jobListData];
+    this.jobListData = this.cachedList.filter((item,index)=>item?.id && item?.id > this.jobListData.length);
+  } else {
+    this.jobListData = this.cachedList.filter((item,index)=> item?.id && item?.id < this.jobListData.length)
+  }
+}
 }

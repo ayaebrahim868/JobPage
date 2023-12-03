@@ -6,7 +6,7 @@
     height: 90vh;
     overflow-y: hidden;
     background-color: $color;
-    padding: 20px 0 30px;
+    padding: 20px 0 42px;
     @media only screen and (min-width: 600px) {
       width: 70vw;
     }
@@ -22,7 +22,7 @@
   }
   &__side-filter {
     width: 25vw;
-    height: 93vh;
+    height: 95vh;
     border: 1px solid $color;
     display: none;
     justify-content: flex-start;
@@ -55,6 +55,19 @@
   }
   &__card{
     overflow-y: auto;
+    height: 80%;
+    @media only screen and (min-width: 600px) {
     height: 90%;
+    }
+  }
+  &__next {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    button {
+      margin: 0 6px;
+      width: 100px;
+    }
   }
 }
