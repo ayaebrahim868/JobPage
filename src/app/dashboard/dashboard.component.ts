@@ -85,10 +85,10 @@ public deleteJobItemFunc(id: any) {
         if (item?.id === id) {
           this.cachedList.splice(index, 1);
         }
-        // this.jobListData = [...this.cachedList];
-        if(this.cachedList.length> 10) {
-          this.jobListData = this.cachedList.filter((item,index)=> index <10)
-        }
+        this.jobListData = [...this.cachedList];
+        // if(this.cachedList.length> 10) {
+        //   this.jobListData = this.cachedList.filter((item,index)=> index <10)
+        // }
       });
       this.modal.clear();
     });
@@ -119,10 +119,10 @@ public deleteJobItemFunc(id: any) {
     )
     .subscribe((res: IJobCard) => {
       this.cachedList.unshift(res);
-      // this.jobListData = [...this.cachedList];
-      if(this.cachedList.length> 10) {
-        this.jobListData = this.cachedList.filter((item,index)=> index <10)
-      }
+      this.jobListData = [...this.cachedList];
+      // if(this.cachedList.length> 10) {
+      //   this.jobListData = this.cachedList.filter((item,index)=> index <10)
+      // }
       this.modal.clear();
     });
 }
