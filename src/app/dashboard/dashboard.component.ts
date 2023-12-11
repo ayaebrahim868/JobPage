@@ -31,8 +31,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public cachedList: IJobCard[] = [];
   public filterdArray: IJobCard[] | any[] = [];
   private searchSubject = new Subject<string>();
+  public navigationIndex: number = 0;
+  public repeaterNavigation: number = 2;
   private readonly debounceTimeMs = 300; // Set the debounce time (in milliseconds)
   public inputText: string = '';
+  // private selectedFilterArray: any[] = [];
   @ViewChild('modal', { read: ViewContainerRef })
   modal!: ViewContainerRef;
   constructor(private jobListService: JobListService, private filterPipe: FilterPipe){}
@@ -49,8 +52,8 @@ public getPageList() {
   this.jobListService.getJobList().subscribe({
     next: (list) => {
       this.jobListData= this.cachedList = list;
-      if(this.cachedList.length> 10) {
-        this.jobListData = this.cachedList.filter((item,index)=> index <10)
+      if(this.cachedList.length> this.repeaterNavigation) {
+        this.jobListData = this.cachedList.filter((item,index)=> index <this.repeaterNavigation)
       }
     }
 
@@ -153,27 +156,45 @@ performSearch(searchValue: string) {
   this.jobListData = this.filterPipe.transform(this.cachedList,searchValue, 'jobTitle' );
 }
 public selectFilter(ev: any) {
+  let filteredSection;
   if(ev.ev.target.checked){
-    this.filterdArray.push(...this.filterPipe.transform(this.cachedList,ev.ev.target.id, ev.filteredSection ));
+    // this.selectedFilterArray.push(ev.ev.target.id)
+    if(filteredSection == ev.filteredSection) {}
+    if(this.filterdArray.length> 0) {
+      this.filterdArray = this.filterPipe.transform(this.filterdArray,ev.ev.target.id, ev.filteredSection );
+    }
+    else{
+      this.filterdArray = this.filterPipe.transform(this.cachedList,ev.ev.target.id, ev.filteredSection );
+    }
   } else {
-    this.filterdArray = this.filterdArray.filter((item) =>{
-     return item[`${ev.filteredSection}`]?.toLowerCase() !== ev.ev.target.id.toLowerCase()
-    })
+    // this.filterdArray = this.cachedList;
+    console.log('this.filterdArray', this.filterdArray);
+
+    // this.filterdArray = this.filterdArray.filter((item) =>{
+    //  return item[`${ev.filteredSection}`]?.toLowerCase() !== ev.ev.target.id.toLowerCase()
+    // })
   }
   if(this.filterdArray.length> 0) {
   this.jobListData = this.filterdArray;
   } else {
     this.jobListData = this.cachedList;
   }
+  filteredSection = ev.filteredSection;
 }
 
 public navFun(btnType: string) {
-  let savedData =[];
+
+if(this.navigationIndex <= Math.ceil(this.cachedList.length/this.repeaterNavigation)-1) {
   if(btnType == 'next') {
-    savedData = [...this.jobListData];
-    this.jobListData = this.cachedList.filter((item,index)=>item?.id && item?.id > this.jobListData.length);
+    this.navigationIndex ++;
   } else {
-    this.jobListData = this.cachedList.filter((item,index)=> item?.id && item?.id < this.jobListData.length)
-  }
+    this.navigationIndex --;
+   }
+   this.jobListData = this.cachedList.filter((item,index)=> index >=(this.navigationIndex*this.repeaterNavigation) && (index< this.navigationIndex*this.repeaterNavigation+this.repeaterNavigation));
+   console.log('this.navigationIndex', this.navigationIndex);
+   console.log('this.jobListData', this.jobListData);
+   console.log('this.cachedList', this.cachedList);
+}
+
 }
 }

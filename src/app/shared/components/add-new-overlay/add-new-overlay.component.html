@@ -11,7 +11,11 @@
             </h3>
       <div class="overlay__row">
         <input type="text" class="overlay__input" placeholder="enter your Job name in List!" formControlName="name">
-        <input type="text" class="overlay__input" placeholder="enter sector!" formControlName="sector">
+        <!-- <input type="text" class="overlay__input" placeholder="enter sector!" formControlName="sector"> -->
+        <select class="overlay__select" name="sector" formControlName="sector" value="selected">
+          <option selected="selected" disabled value="selected">select sector!</option>
+          <option *ngFor="let item of sectors; let i= index" id="i" [value]="item">{{item}}</option>
+         </select>
       </div>
       <div class="overlay__row">
         <ng-container >

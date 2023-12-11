@@ -14,10 +14,10 @@
       <app-job-card *ngFor="let item of jobListData" [jobData]="item" (deleteItem)="deleteJobItemFunc(item.id)" (viewDetails)="viewDetailsFun(item)"></app-job-card>
     </div>
     <div class="container__next" *ngIf="this.cachedList.length> 10">
-      <button class="container__btn" (click)="navFun('previous')">
+      <button class="container__btn" *ngIf="navigationIndex != 0" (click)="navFun('previous')">
         previous
       </button>
-      <button class="container__btn" (click)="navFun('next')">
+      <button class="container__btn" *ngIf="(navigationIndex < cachedList.length/repeaterNavigation-1)"  (click)="navFun('next')">
         next
       </button>
     </div>

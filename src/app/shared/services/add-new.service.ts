@@ -6,7 +6,7 @@ import { API_URLS } from 'src/app/common/routes-config';
 @Injectable({
   providedIn: 'root'
 })
-export class CountryService {
+export class AddNewService {
 
   constructor(private http: HttpClient) {}
   /**
@@ -14,6 +14,13 @@ export class CountryService {
    */
   public getCountryList(): Observable<any>{
     return this.http.get(API_URLS.COUNTRY).pipe(map((response) => response));
+
+  }
+  /**
+   * getSectorList
+   */
+  public getSectorList(): Observable<any>{
+    return this.http.get(API_URLS.SECTOR).pipe(map((response) => response));
 
   }
 }

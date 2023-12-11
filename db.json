@@ -4,7 +4,7 @@
       "jobTitle": "angular developer",
       "city": "cairo",
       "country": "Egypt",
-      "sector": "Computer software",
+      "sector": "Web Development",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 1
@@ -13,7 +13,7 @@
       "jobTitle": "java developer",
       "city": "cairo",
       "country": "Egypt",
-      "sector": "Computer software",
+      "sector": "Software Development",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 2
@@ -23,7 +23,7 @@
       "city": "cairo",
       "country": "Egypt",
       "img": "job.png",
-      "sector": "Computer software",
+      "sector": "Design",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 3
     },
@@ -31,7 +31,7 @@
       "jobTitle": "ruby developer",
       "city": "london",
       "country": "UK",
-      "sector": "Computer software",
+      "sector": "Software Development",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 4
@@ -40,7 +40,7 @@
       "jobTitle": "JS Engineer",
       "city": "gedda",
       "country": "KSA",
-      "sector": "Computer software",
+      "sector": "Web Development",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 5
@@ -49,7 +49,7 @@
       "jobTitle": "js Engineer",
       "city": "cairo",
       "country": "Egypt",
-      "sector": "Computer software",
+      "sector": "Web Development",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 6
@@ -58,13 +58,13 @@
       "jobTitle": "science teacher",
       "city": "cairo",
       "country": "Egypt",
-      "sector": "teaching",
+      "sector": "Teaching",
       "img": "job.png",
       "description": "Lorem Ipsum is simply dummy.",
       "id": 7
     },
     {
-      "jobTitle": "science teacher",
+      "jobTitle": "biology teacher",
       "city": "gedda",
       "country": "KSA",
       "sector": "Teaching",
@@ -91,7 +91,7 @@
       "id": 10
     },
     {
-      "jobTitle": "Arabic teacher",
+      "jobTitle": "physics teacher",
       "city": "cairo",
       "country": "Egypt",
       "sector": "Teaching",
@@ -108,5 +108,14 @@
       "description": "Lorem Ipsum is simply dummy.",
       "id": 12
     }
+  ],
+  "sector": [
+    "Teaching",
+    "Software Development",
+    "Web Development",
+    "Design",
+    "Marketing",
+    "Finance & Accounting",
+    "Human Resources"
   ]
 }
